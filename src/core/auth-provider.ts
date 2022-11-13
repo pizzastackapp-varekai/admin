@@ -28,7 +28,7 @@ export const authProvider = {
 	},
 	checkAuth: () => {
 		if (!localStorage.getItem(JWT_ADMIN_TOKEN)) {
-			Promise.reject()
+			return Promise.reject()
 		}
 		return Promise.resolve()
 	},

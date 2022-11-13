@@ -9317,6 +9317,11 @@ ra-language-english@^4.5.0:
   dependencies:
     ra-core "^4.5.0"
 
+ra-language-ukrainian@^2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/ra-language-ukrainian/-/ra-language-ukrainian-2.4.0.tgz#bcd6a756d013cf0e014fe4599e42e436792c0912"
+  integrity sha512-aTBFORVzNutmDighLQif/34Mr6kcdRr5t856BMu32mD0tsGEW68xnK07CPElbUolOxKPKlcgmUxoXmACgt9jiQ==
+
 ra-ui-materialui@^4.5.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/ra-ui-materialui/-/ra-ui-materialui-4.5.0.tgz#01f5cfeeed1e2e12e7b260599ff598964e93108a"
