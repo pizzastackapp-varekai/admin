@@ -1,6 +1,6 @@
 import { cloudinary } from '@app/core/cloudinary'
 import { AdvancedImage } from '@cloudinary/react'
-import { thumbnail } from '@cloudinary/url-gen/actions/resize'
+
 import {
 	Button,
 	Card,
