@@ -38,12 +38,18 @@ export const CloudinaryInput: FC<InputProps> = props => {
 		}
 		onChange(data!.public_id)
 	}
+
+	const {
+		field: { value: categoryId },
+	} = useInput({ source: 'category_id' })
+	const isDrinkCategory = categoryId === 'b7308596-bc63-4e23-abf1-7d0853c93fe9'
 	return (
 		<CloudinaryInputUI
 			label={computedLabel}
 			value={value}
 			disabled={loading}
 			onImageSelected={onImageSelected}
+			fitImage={isDrinkCategory}
 		/>
 	)
 }

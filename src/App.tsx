@@ -9,11 +9,13 @@ import { authProvider } from '@app/core/auth-provider'
 import { apolloClient } from '@app/core/apollo-client'
 import { theme } from '@app/core/theme'
 import { i18nProvider } from '@app/core/i18n'
+import { CategoryList } from './modules/category/components/category-list/category-list.component'
+import { CategoryEdit } from './modules/category/components/category-edit/category-edit.component'
+import { CategoryCreate } from './modules/category/components/category-create/category-create.component'
 
 export const App = () => {
-	const [dataProvider, setDataProvider] = useState<DataProvider<string> | null>(
-		null
-	)
+	const [dataProvider, setDataProvider] =
+		useState<DataProvider<string> | null>(null)
 
 	useEffect(() => {
 		const buildDataProvider = async () => {
@@ -44,6 +46,15 @@ export const App = () => {
 					edit={MenuEdit}
 					create={MenuCreate}
 					options={{ label: 'Меню' }}
+				/>
+				<Resource
+					name="categories"
+					list={CategoryList}
+					edit={CategoryEdit}
+					create={CategoryCreate}
+					options={{
+						label: 'Категорії',
+					}}
 				/>
 			</Admin>
 		</Fragment>
