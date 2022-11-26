@@ -1,0 +1,5 @@
+query GetSettingsQuery {
+	settings {
+		id
+	}
+}

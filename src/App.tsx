@@ -1,6 +1,12 @@
 import { CssBaseline } from '@mui/material'
 import { Fragment, useEffect, useState } from 'react'
-import { Admin, DataProvider, Loading, Resource } from 'react-admin'
+import {
+	Admin,
+	CustomRoutes,
+	DataProvider,
+	Loading,
+	Resource,
+} from 'react-admin'
 import buildHasuraProvider from 'ra-data-hasura'
 import { MenuList } from '@app/modules/menu/components/menu-list/menu-list.component'
 import { MenuEdit } from '@app/modules/menu/components/menu-edit/menu-edit.component'
@@ -12,6 +18,11 @@ import { i18nProvider } from '@app/core/i18n'
 import { CategoryList } from './modules/category/components/category-list/category-list.component'
 import { CategoryEdit } from './modules/category/components/category-edit/category-edit.component'
 import { CategoryCreate } from './modules/category/components/category-create/category-create.component'
+import { Route } from 'react-router-dom'
+import { SettingEdit } from './modules/settings/components/setting-edit/setting-edit.component'
+import { Layout } from './common/components/layout/layout.component'
+import RestaurantMenuIcon from '@mui/icons-material/RestaurantMenu'
+import CategoryIcon from '@mui/icons-material/Category'
 
 export const App = () => {
 	const [dataProvider, setDataProvider] =
@@ -39,6 +50,7 @@ export const App = () => {
 				i18nProvider={i18nProvider}
 				requireAuth
 				theme={theme}
+				layout={Layout}
 			>
 				<Resource
 					name="menu"
@@ -46,6 +58,7 @@ export const App = () => {
 					edit={MenuEdit}
 					create={MenuCreate}
 					options={{ label: 'Меню' }}
+					icon={RestaurantMenuIcon}
 				/>
 				<Resource
 					name="categories"
@@ -55,7 +68,12 @@ export const App = () => {
 					options={{
 						label: 'Категорії',
 					}}
+					icon={CategoryIcon}
 				/>
+				<Resource name="settings" />
+				<CustomRoutes>
+					<Route path="/settings" element={<SettingEdit />} />
+				</CustomRoutes>
 			</Admin>
 		</Fragment>
 	)

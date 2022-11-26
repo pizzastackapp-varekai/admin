@@ -720,6 +720,10 @@ export type Mutation_Root = {
   delete_menu?: Maybe<Menu_Mutation_Response>;
   /** delete single row from the table: "menu" */
   delete_menu_by_pk?: Maybe<Menu>;
+  /** delete data from the table: "settings" */
+  delete_settings?: Maybe<Settings_Mutation_Response>;
+  /** delete single row from the table: "settings" */
+  delete_settings_by_pk?: Maybe<Settings>;
   /** insert data into the table: "admin" */
   insert_admin?: Maybe<Admin_Mutation_Response>;
   /** insert a single row into the table: "admin" */
@@ -732,6 +736,10 @@ export type Mutation_Root = {
   insert_menu?: Maybe<Menu_Mutation_Response>;
   /** insert a single row into the table: "menu" */
   insert_menu_one?: Maybe<Menu>;
+  /** insert data into the table: "settings" */
+  insert_settings?: Maybe<Settings_Mutation_Response>;
+  /** insert a single row into the table: "settings" */
+  insert_settings_one?: Maybe<Settings>;
   /** update data of the table: "admin" */
   update_admin?: Maybe<Admin_Mutation_Response>;
   /** update single row of the table: "admin" */
@@ -744,6 +752,10 @@ export type Mutation_Root = {
   update_menu?: Maybe<Menu_Mutation_Response>;
   /** update single row of the table: "menu" */
   update_menu_by_pk?: Maybe<Menu>;
+  /** update data of the table: "settings" */
+  update_settings?: Maybe<Settings_Mutation_Response>;
+  /** update single row of the table: "settings" */
+  update_settings_by_pk?: Maybe<Settings>;
 };
 
 
@@ -785,6 +797,18 @@ export type Mutation_RootDelete_MenuArgs = {
 
 /** mutation root */
 export type Mutation_RootDelete_Menu_By_PkArgs = {
+  id: Scalars['uuid'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_SettingsArgs = {
+  where: Settings_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Settings_By_PkArgs = {
   id: Scalars['uuid'];
 };
 
@@ -832,6 +856,20 @@ export type Mutation_RootInsert_Menu_OneArgs = {
 
 
 /** mutation root */
+export type Mutation_RootInsert_SettingsArgs = {
+  objects: Array<Settings_Insert_Input>;
+  on_conflict?: InputMaybe<Settings_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Settings_OneArgs = {
+  object: Settings_Insert_Input;
+  on_conflict?: InputMaybe<Settings_On_Conflict>;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_AdminArgs = {
   _set?: InputMaybe<Admin_Set_Input>;
   where: Admin_Bool_Exp;
@@ -872,6 +910,20 @@ export type Mutation_RootUpdate_Menu_By_PkArgs = {
   _inc?: InputMaybe<Menu_Inc_Input>;
   _set?: InputMaybe<Menu_Set_Input>;
   pk_columns: Menu_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_SettingsArgs = {
+  _set?: InputMaybe<Settings_Set_Input>;
+  where: Settings_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Settings_By_PkArgs = {
+  _set?: InputMaybe<Settings_Set_Input>;
+  pk_columns: Settings_Pk_Columns_Input;
 };
 
 /** Boolean expression to compare columns of type "numeric". All fields are combined with logical 'AND'. */
@@ -927,6 +979,12 @@ export type Query_Root = {
   menu_aggregate: Menu_Aggregate;
   /** fetch data from the table: "menu" using primary key columns */
   menu_by_pk?: Maybe<Menu>;
+  /** fetch data from the table: "settings" */
+  settings: Array<Settings>;
+  /** fetch aggregated fields from the table: "settings" */
+  settings_aggregate: Settings_Aggregate;
+  /** fetch data from the table: "settings" using primary key columns */
+  settings_by_pk?: Maybe<Settings>;
 };
 
 
@@ -1003,6 +1061,142 @@ export type Query_RootMenu_By_PkArgs = {
   id: Scalars['uuid'];
 };
 
+
+export type Query_RootSettingsArgs = {
+  distinct_on?: InputMaybe<Array<Settings_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Settings_Order_By>>;
+  where?: InputMaybe<Settings_Bool_Exp>;
+};
+
+
+export type Query_RootSettings_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Settings_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Settings_Order_By>>;
+  where?: InputMaybe<Settings_Bool_Exp>;
+};
+
+
+export type Query_RootSettings_By_PkArgs = {
+  id: Scalars['uuid'];
+};
+
+/** columns and relationships of "settings" */
+export type Settings = {
+  __typename?: 'settings';
+  drinks_category?: Maybe<Scalars['uuid']>;
+  id: Scalars['uuid'];
+};
+
+/** aggregated selection of "settings" */
+export type Settings_Aggregate = {
+  __typename?: 'settings_aggregate';
+  aggregate?: Maybe<Settings_Aggregate_Fields>;
+  nodes: Array<Settings>;
+};
+
+/** aggregate fields of "settings" */
+export type Settings_Aggregate_Fields = {
+  __typename?: 'settings_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Settings_Max_Fields>;
+  min?: Maybe<Settings_Min_Fields>;
+};
+
+
+/** aggregate fields of "settings" */
+export type Settings_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Settings_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** Boolean expression to filter rows from the table "settings". All fields are combined with a logical 'AND'. */
+export type Settings_Bool_Exp = {
+  _and?: InputMaybe<Array<Settings_Bool_Exp>>;
+  _not?: InputMaybe<Settings_Bool_Exp>;
+  _or?: InputMaybe<Array<Settings_Bool_Exp>>;
+  drinks_category?: InputMaybe<Uuid_Comparison_Exp>;
+  id?: InputMaybe<Uuid_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "settings" */
+export enum Settings_Constraint {
+  /** unique or primary key constraint on columns "id" */
+  SettingsPkey = 'settings_pkey'
+}
+
+/** input type for inserting data into table "settings" */
+export type Settings_Insert_Input = {
+  drinks_category?: InputMaybe<Scalars['uuid']>;
+  id?: InputMaybe<Scalars['uuid']>;
+};
+
+/** aggregate max on columns */
+export type Settings_Max_Fields = {
+  __typename?: 'settings_max_fields';
+  drinks_category?: Maybe<Scalars['uuid']>;
+  id?: Maybe<Scalars['uuid']>;
+};
+
+/** aggregate min on columns */
+export type Settings_Min_Fields = {
+  __typename?: 'settings_min_fields';
+  drinks_category?: Maybe<Scalars['uuid']>;
+  id?: Maybe<Scalars['uuid']>;
+};
+
+/** response of any mutation on the table "settings" */
+export type Settings_Mutation_Response = {
+  __typename?: 'settings_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Settings>;
+};
+
+/** on_conflict condition type for table "settings" */
+export type Settings_On_Conflict = {
+  constraint: Settings_Constraint;
+  update_columns?: Array<Settings_Update_Column>;
+  where?: InputMaybe<Settings_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "settings". */
+export type Settings_Order_By = {
+  drinks_category?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: settings */
+export type Settings_Pk_Columns_Input = {
+  id: Scalars['uuid'];
+};
+
+/** select columns of table "settings" */
+export enum Settings_Select_Column {
+  /** column name */
+  DrinksCategory = 'drinks_category',
+  /** column name */
+  Id = 'id'
+}
+
+/** input type for updating data in table "settings" */
+export type Settings_Set_Input = {
+  drinks_category?: InputMaybe<Scalars['uuid']>;
+  id?: InputMaybe<Scalars['uuid']>;
+};
+
+/** update columns of table "settings" */
+export enum Settings_Update_Column {
+  /** column name */
+  DrinksCategory = 'drinks_category',
+  /** column name */
+  Id = 'id'
+}
+
 export type Subscription_Root = {
   __typename?: 'subscription_root';
   /** fetch data from the table: "admin" */
@@ -1023,6 +1217,12 @@ export type Subscription_Root = {
   menu_aggregate: Menu_Aggregate;
   /** fetch data from the table: "menu" using primary key columns */
   menu_by_pk?: Maybe<Menu>;
+  /** fetch data from the table: "settings" */
+  settings: Array<Settings>;
+  /** fetch aggregated fields from the table: "settings" */
+  settings_aggregate: Settings_Aggregate;
+  /** fetch data from the table: "settings" using primary key columns */
+  settings_by_pk?: Maybe<Settings>;
 };
 
 
@@ -1094,6 +1294,29 @@ export type Subscription_RootMenu_By_PkArgs = {
   id: Scalars['uuid'];
 };
 
+
+export type Subscription_RootSettingsArgs = {
+  distinct_on?: InputMaybe<Array<Settings_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Settings_Order_By>>;
+  where?: InputMaybe<Settings_Bool_Exp>;
+};
+
+
+export type Subscription_RootSettings_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Settings_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Settings_Order_By>>;
+  where?: InputMaybe<Settings_Bool_Exp>;
+};
+
+
+export type Subscription_RootSettings_By_PkArgs = {
+  id: Scalars['uuid'];
+};
+
 /** Boolean expression to compare columns of type "uuid". All fields are combined with logical 'AND'. */
 export type Uuid_Comparison_Exp = {
   _eq?: InputMaybe<Scalars['uuid']>;
@@ -1124,6 +1347,11 @@ export type CloudinarySignatureQueryVariables = Exact<{ [key: string]: never; }>
 
 
 export type CloudinarySignatureQuery = { __typename?: 'query_root', cloudinarySignature?: { __typename?: 'CloudinarySingatureOutput', apiKey: string, cloudName: string, publicId: string, signature: string, timestamp: number } | null };
+
+export type GetSettingsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetSettingsQuery = { __typename?: 'query_root', settings: Array<{ __typename?: 'settings', id: any }> };
 
 
 export const AdminGetMeDocument = gql`
@@ -1235,3 +1463,37 @@ export function useCloudinarySignatureLazyQuery(baseOptions?: Apollo.LazyQueryHo
 export type CloudinarySignatureQueryHookResult = ReturnType<typeof useCloudinarySignatureQuery>;
 export type CloudinarySignatureLazyQueryHookResult = ReturnType<typeof useCloudinarySignatureLazyQuery>;
 export type CloudinarySignatureQueryResult = Apollo.QueryResult<CloudinarySignatureQuery, CloudinarySignatureQueryVariables>;
+export const GetSettingsDocument = gql`
+    query GetSettings {
+  settings {
+    id
+  }
+}
+    `;
+
+/**
+ * __useGetSettingsQuery__
+ *
+ * To run a query within a React component, call `useGetSettingsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetSettingsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetSettingsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetSettingsQuery(baseOptions?: Apollo.QueryHookOptions<GetSettingsQuery, GetSettingsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetSettingsQuery, GetSettingsQueryVariables>(GetSettingsDocument, options);
+      }
+export function useGetSettingsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetSettingsQuery, GetSettingsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetSettingsQuery, GetSettingsQueryVariables>(GetSettingsDocument, options);
+        }
+export type GetSettingsQueryHookResult = ReturnType<typeof useGetSettingsQuery>;
+export type GetSettingsLazyQueryHookResult = ReturnType<typeof useGetSettingsLazyQuery>;
+export type GetSettingsQueryResult = Apollo.QueryResult<GetSettingsQuery, GetSettingsQueryVariables>;
