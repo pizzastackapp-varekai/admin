@@ -1348,10 +1348,10 @@ export type CloudinarySignatureQueryVariables = Exact<{ [key: string]: never; }>
 
 export type CloudinarySignatureQuery = { __typename?: 'query_root', cloudinarySignature?: { __typename?: 'CloudinarySingatureOutput', apiKey: string, cloudName: string, publicId: string, signature: string, timestamp: number } | null };
 
-export type GetSettingsQueryVariables = Exact<{ [key: string]: never; }>;
+export type GetSettingsQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetSettingsQuery = { __typename?: 'query_root', settings: Array<{ __typename?: 'settings', id: any }> };
+export type GetSettingsQueryQuery = { __typename?: 'query_root', settings: Array<{ __typename?: 'settings', id: any }> };
 
 
 export const AdminGetMeDocument = gql`
@@ -1463,8 +1463,8 @@ export function useCloudinarySignatureLazyQuery(baseOptions?: Apollo.LazyQueryHo
 export type CloudinarySignatureQueryHookResult = ReturnType<typeof useCloudinarySignatureQuery>;
 export type CloudinarySignatureLazyQueryHookResult = ReturnType<typeof useCloudinarySignatureLazyQuery>;
 export type CloudinarySignatureQueryResult = Apollo.QueryResult<CloudinarySignatureQuery, CloudinarySignatureQueryVariables>;
-export const GetSettingsDocument = gql`
-    query GetSettings {
+export const GetSettingsQueryDocument = gql`
+    query GetSettingsQuery {
   settings {
     id
   }
@@ -1472,28 +1472,28 @@ export const GetSettingsDocument = gql`
     `;
 
 /**
- * __useGetSettingsQuery__
+ * __useGetSettingsQueryQuery__
  *
- * To run a query within a React component, call `useGetSettingsQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetSettingsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useGetSettingsQueryQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetSettingsQueryQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useGetSettingsQuery({
+ * const { data, loading, error } = useGetSettingsQueryQuery({
  *   variables: {
  *   },
  * });
  */
-export function useGetSettingsQuery(baseOptions?: Apollo.QueryHookOptions<GetSettingsQuery, GetSettingsQueryVariables>) {
+export function useGetSettingsQueryQuery(baseOptions?: Apollo.QueryHookOptions<GetSettingsQueryQuery, GetSettingsQueryQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetSettingsQuery, GetSettingsQueryVariables>(GetSettingsDocument, options);
+        return Apollo.useQuery<GetSettingsQueryQuery, GetSettingsQueryQueryVariables>(GetSettingsQueryDocument, options);
       }
-export function useGetSettingsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetSettingsQuery, GetSettingsQueryVariables>) {
+export function useGetSettingsQueryLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetSettingsQueryQuery, GetSettingsQueryQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetSettingsQuery, GetSettingsQueryVariables>(GetSettingsDocument, options);
+          return Apollo.useLazyQuery<GetSettingsQueryQuery, GetSettingsQueryQueryVariables>(GetSettingsQueryDocument, options);
         }
-export type GetSettingsQueryHookResult = ReturnType<typeof useGetSettingsQuery>;
-export type GetSettingsLazyQueryHookResult = ReturnType<typeof useGetSettingsLazyQuery>;
-export type GetSettingsQueryResult = Apollo.QueryResult<GetSettingsQuery, GetSettingsQueryVariables>;
+export type GetSettingsQueryQueryHookResult = ReturnType<typeof useGetSettingsQueryQuery>;
+export type GetSettingsQueryLazyQueryHookResult = ReturnType<typeof useGetSettingsQueryLazyQuery>;
+export type GetSettingsQueryQueryResult = Apollo.QueryResult<GetSettingsQueryQuery, GetSettingsQueryQueryVariables>;
