@@ -1,5 +1,5 @@
 query AdminLogin($password: String!, $username: String!) {
-	adminLogin(admin: { password: $password, username: $username }) {
-		accessToken
-	}
+  adminLogin(admin: { password: $password, username: $username }) {
+    accessToken
+  }
 }

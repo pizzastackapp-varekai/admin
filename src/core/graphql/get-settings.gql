@@ -1,5 +1,6 @@
-query GetSettingsQuery {
-	settings {
-		id
-	}
+query GetSettings {
+  settings {
+    id
+    drinks_category
+  }
 }

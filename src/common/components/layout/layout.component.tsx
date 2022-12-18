@@ -1,7 +1,7 @@
-import { FC } from 'react'
-import { Layout as LayoutOriginal, LayoutProps } from 'react-admin'
-import { AppBar } from '../app-bar/app-bar.component'
+import { AppBar } from '@app/common/components/app-bar/app-bar.component';
+import { FC } from 'react';
+import { Layout as LayoutOriginal, LayoutProps } from 'react-admin';
 
-export const Layout: FC<LayoutProps> = props => {
-	return <LayoutOriginal {...props} appBar={AppBar} />
-}
+export const Layout: FC<LayoutProps> = (props) => {
+  return <LayoutOriginal {...props} appBar={AppBar} />;
+};

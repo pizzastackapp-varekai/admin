@@ -1,33 +1,32 @@
+import { useGetSettingsQuery } from '@app/core/types';
+import { SettingEditToolbar } from '@app/modules/settings/components/setting-edit-toolbar/setting-edit-toolbar.component';
 import {
-	Edit,
-	ReferenceInput,
-	SimpleForm,
-	SelectInput,
-	Loading,
-} from 'react-admin'
-import { SettingEditToolbar } from '../setting-edit-toolbar/setting-edit-toolbar.component'
-
-import { useGetSettingsQuery } from '@app/core/types'
+  Edit,
+  Loading,
+  ReferenceInput,
+  SelectInput,
+  SimpleForm,
+} from 'react-admin';
 
 export const SettingEdit = () => {
-	const { data, loading } = useGetSettingsQuery()
+  const { data, loading } = useGetSettingsQuery();
 
-	if (!data || loading) {
-		return <Loading />
-	}
+  if (!data || loading) {
+    return <Loading />;
+  }
 
-	return (
-		<Edit
-			mutationMode="pessimistic"
-			title="Налаштування"
-			id={data.settings[0].id}
-			resource="settings"
-		>
-			<SimpleForm toolbar={<SettingEditToolbar />}>
-				<ReferenceInput source="drinks_category" reference="categories">
-					<SelectInput optionText="title" label="Категорії напоїв" fullWidth />
-				</ReferenceInput>
-			</SimpleForm>
-		</Edit>
-	)
-}
+  return (
+    <Edit
+      mutationMode="pessimistic"
+      title="Налаштування"
+      id={data.settings[0].id}
+      resource="settings"
+    >
+      <SimpleForm toolbar={<SettingEditToolbar />}>
+        <ReferenceInput source="drinks_category" reference="categories">
+          <SelectInput optionText="title" label="Категорія напоїв" fullWidth />
+        </ReferenceInput>
+      </SimpleForm>
+    </Edit>
+  );
+};
