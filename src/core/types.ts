@@ -43,8 +43,8 @@ export type AdminRegisterOutput = {
   accessToken: Scalars['String'];
 };
 
-export type CloudinarySignatureOutput = {
-  __typename?: 'CloudinarySignatureOutput';
+export type CloudinarySingatureOutput = {
+  __typename?: 'CloudinarySingatureOutput';
   apiKey: Scalars['String'];
   cloudName: Scalars['String'];
   publicId: Scalars['String'];
@@ -714,7 +714,6 @@ export type Menu_Variance_Order_By = {
 /** mutation root */
 export type Mutation_Root = {
   __typename?: 'mutation_root';
-  /** Admin registration */
   adminRegister?: Maybe<AdminRegisterOutput>;
   /** delete data from the table: "admin" */
   delete_admin?: Maybe<Admin_Mutation_Response>;
@@ -1603,7 +1602,7 @@ export type Query_Root = {
   categories_aggregate: Categories_Aggregate;
   /** fetch data from the table: "categories" using primary key columns */
   categories_by_pk?: Maybe<Categories>;
-  cloudinarySignature?: Maybe<CloudinarySignatureOutput>;
+  cloudinarySignature?: Maybe<CloudinarySingatureOutput>;
   /** fetch data from the table: "menu" */
   menu: Array<Menu>;
   /** fetch aggregated fields from the table: "menu" */
@@ -2151,7 +2150,7 @@ export type AdminLoginQuery = { __typename?: 'query_root', adminLogin?: { __type
 export type CloudinarySignatureQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type CloudinarySignatureQuery = { __typename?: 'query_root', cloudinarySignature?: { __typename?: 'CloudinarySignatureOutput', apiKey: string, cloudName: string, publicId: string, signature: string, timestamp: number } | null };
+export type CloudinarySignatureQuery = { __typename?: 'query_root', cloudinarySignature?: { __typename?: 'CloudinarySingatureOutput', apiKey: string, cloudName: string, publicId: string, signature: string, timestamp: number } | null };
 
 export type GetSettingsQueryVariables = Exact<{ [key: string]: never; }>;
 
