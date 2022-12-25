@@ -1,37 +1,48 @@
+import {
+	Admin,
+	CustomRoutes,
+	DataProvider,
+	Loading,
+	Resource,
+} from 'react-admin'
 import { CssBaseline } from '@mui/material'
-import { Fragment, useEffect, useState } from 'react'
-import { Admin, DataProvider, Loading, Resource } from 'react-admin'
-import buildHasuraProvider from 'ra-data-hasura'
-import { MenuList } from '@app/modules/menu/components/menu-list/menu-list.component'
-import { MenuEdit } from '@app/modules/menu/components/menu-edit/menu-edit.component'
-import { MenuCreate } from '@app/modules/menu/components/menu-create/menu-create.component'
+import { useEffect, useState } from 'react'
 import { authProvider } from '@app/core/auth-provider'
-import { apolloClient } from '@app/core/apollo-client'
 import { theme } from '@app/core/theme'
 import { i18nProvider } from '@app/core/i18n'
-import { CategoryList } from './modules/category/components/category-list/category-list.component'
-import { CategoryEdit } from './modules/category/components/category-edit/category-edit.component'
-import { CategoryCreate } from './modules/category/components/category-create/category-create.component'
+
+import { SettingEdit } from '@app/modules/settings/components/setting-edit/setting-edit.component'
+import { Route } from 'react-router-dom'
+import { Layout } from '@app/common/components/layout/layout.component'
+
+import { useGetSettingsQuery } from '@app/core/types'
+import { buildDataProvider } from '@app/core/data-provider'
+import { MenuResource } from '@app/modules/menu/menu-resource'
+import { CategoryResource } from '@app/modules/category/category-resource'
+import { OrdersResource } from '@app/modules/orders/orders.resource'
+import { Dashboard } from './modules/dashboard/components/dashboard/dashboard.component'
 
 export const App = () => {
+	const { data: settings } = useGetSettingsQuery()
+
 	const [dataProvider, setDataProvider] =
 		useState<DataProvider<string> | null>(null)
-
 	useEffect(() => {
-		const buildDataProvider = async () => {
-			const db = await buildHasuraProvider({
-				client: apolloClient,
-			})
-			setDataProvider(db)
+		const getDataProvider = async () => {
+			const dp = await buildDataProvider()
+
+			setDataProvider(dp)
 		}
-		buildDataProvider()
+
+		getDataProvider()
 	}, [])
 
-	if (!dataProvider) {
+	if (!dataProvider || !settings) {
 		return <Loading />
 	}
+
 	return (
-		<Fragment>
+		<>
 			<CssBaseline />
 			<Admin
 				dataProvider={dataProvider}
@@ -39,24 +50,22 @@ export const App = () => {
 				i18nProvider={i18nProvider}
 				requireAuth
 				theme={theme}
+				layout={Layout}
+				dashboard={Dashboard}
 			>
-				<Resource
-					name="menu"
-					list={MenuList}
-					edit={MenuEdit}
-					create={MenuCreate}
-					options={{ label: 'Меню' }}
-				/>
-				<Resource
-					name="categories"
-					list={CategoryList}
-					edit={CategoryEdit}
-					create={CategoryCreate}
-					options={{
-						label: 'Категорії',
-					}}
-				/>
+				<Resource {...MenuResource} />
+				<Resource {...CategoryResource} />
+				<Resource {...OrdersResource} />
+				<Resource name="settings" />
+				<Resource name="order_status" />
+				<Resource name="orders_menu" />
+				<Resource name="last_week_orders" />
+				<CustomRoutes>
+					<Route path="/settings" element={<SettingEdit />} />
+				</CustomRoutes>
 			</Admin>
-		</Fragment>
+		</>
 	)
 }
+
+export default App
