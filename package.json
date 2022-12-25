@@ -20,6 +20,7 @@
     "@types/react-dom": "^18.0.0",
     "axios": "^0.27.2",
     "graphql": "^16.5.0",
+    "luxon": "^3.1.1",
     "ra-data-hasura": "^0.5.2",
     "ra-i18n-polyglot": "^4.2.6",
     "ra-language-ukrainian": "^2.1.0",
@@ -28,6 +29,7 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.1.0",
     "react-scripts": "5.0.1",
+    "recharts": "^2.2.0",
     "typescript": "^4.4.2",
     "web-vitals": "^2.1.0"
   },
@@ -50,7 +52,8 @@
           "**/*.stories.*"
         ],
         "rules": {
-          "import/no-anonymous-default-export": "off"
+          "import/no-anonymous-default-export": "off",
+          "react-hooks/exhaustive-deps": "off"
         }
       }
     ]
@@ -82,6 +85,7 @@
     "@storybook/preset-create-react-app": "^4.1.2",
     "@storybook/react": "^6.5.10",
     "@storybook/testing-library": "^0.0.13",
+    "@types/luxon": "^3.1.0",
     "babel-plugin-named-exports-order": "^0.0.2",
     "graphql-tag": "^2.12.6",
     "prop-types": "^15.8.1",

@@ -20,6 +20,7 @@ import { buildDataProvider } from '@app/core/data-provider'
 import { MenuResource } from '@app/modules/menu/menu-resource'
 import { CategoryResource } from '@app/modules/category/category-resource'
 import { OrdersResource } from '@app/modules/orders/orders.resource'
+import { Dashboard } from './modules/dashboard/components/dashboard/dashboard.component'
 
 export const App = () => {
 	const { data: settings } = useGetSettingsQuery()
@@ -50,6 +51,7 @@ export const App = () => {
 				requireAuth
 				theme={theme}
 				layout={Layout}
+				dashboard={Dashboard}
 			>
 				<Resource {...MenuResource} />
 				<Resource {...CategoryResource} />
@@ -57,6 +59,7 @@ export const App = () => {
 				<Resource name="settings" />
 				<Resource name="order_status" />
 				<Resource name="orders_menu" />
+				<Resource name="last_week_orders" />
 				<CustomRoutes>
 					<Route path="/settings" element={<SettingEdit />} />
 				</CustomRoutes>
