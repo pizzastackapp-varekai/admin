@@ -21,6 +21,7 @@ import { MenuResource } from '@app/modules/menu/menu-resource'
 import { CategoryResource } from '@app/modules/category/category-resource'
 import { OrdersResource } from '@app/modules/orders/orders.resource'
 import { Dashboard } from './modules/dashboard/components/dashboard/dashboard.component'
+import { CustomerResource } from './modules/customers/customers.resource'
 
 export const App = () => {
 	const { data: settings } = useGetSettingsQuery()
@@ -56,10 +57,12 @@ export const App = () => {
 				<Resource {...MenuResource} />
 				<Resource {...CategoryResource} />
 				<Resource {...OrdersResource} />
+				<Resource {...CustomerResource} />
 				<Resource name="settings" />
 				<Resource name="order_status" />
 				<Resource name="orders_menu" />
 				<Resource name="last_week_orders" />
+
 				<CustomRoutes>
 					<Route path="/settings" element={<SettingEdit />} />
 				</CustomRoutes>
