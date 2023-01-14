@@ -1,11 +1,11 @@
 import { FC } from 'react';
 import { useRecordContext } from 'react-admin';
 
-interface EditTitleProps {
+interface CustomTitleProps {
   source: string;
 }
 
-export const EditTitle: FC<EditTitleProps> = ({ source }) => {
+export const CustomTitle: FC<CustomTitleProps> = ({ source }) => {
   const record = useRecordContext();
 
   if (!record) {
