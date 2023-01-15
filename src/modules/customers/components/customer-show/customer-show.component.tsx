@@ -8,11 +8,9 @@ import {
 	Show,
 	SimpleShowLayout,
 	TextField,
-	useRecordContext,
 } from 'react-admin'
 
 export const CustomerShow = () => {
-	const record = useRecordContext()
 	return (
 		<Show title={<CustomTitle source="name" />}>
 			<SimpleShowLayout>
