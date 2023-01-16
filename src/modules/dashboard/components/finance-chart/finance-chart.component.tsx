@@ -8,7 +8,7 @@ interface FinanceChartProps {
 
 export const FinanceChart: FC<FinanceChartProps> = ({ data }) => {
 	return (
-		<BarChart width={730} height={250} data={data}>
+		<BarChart width={800} height={250} data={data}>
 			<CartesianGrid strokeDasharray="3 3" />
 			<XAxis dataKey="date" />
 			<YAxis />
