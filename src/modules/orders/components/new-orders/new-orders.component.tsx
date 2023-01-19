@@ -4,10 +4,9 @@ import {
 	DateField,
 	List,
 	FunctionField,
-	ChipField,
-	ReferenceField,
 	EditButton,
 } from 'react-admin'
+import { InlineStatusEdit } from '../inline-status-edit/inline-status-edit.component'
 
 export const NewOrders = () => {
 	return (
@@ -24,14 +23,8 @@ export const NewOrders = () => {
 			}}
 		>
 			<Datagrid bulkActionButtons={false} rowClick="show">
-				<ReferenceField
-					reference="order_status"
-					source="status"
-					label="Статус замовлення"
-					link={false}
-				>
-					<ChipField source="label" />
-				</ReferenceField>
+				<InlineStatusEdit label="Статус замовлення" />
+
 				<DateField
 					source="created_at"
 					label="Створено"
