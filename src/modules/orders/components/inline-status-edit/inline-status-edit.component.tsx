@@ -56,7 +56,11 @@ export const InlineStatusEdit: FC<InlineStatusEditProps> = ({ label }) => {
 				fullWidth
 			>
 				{orderStatus.data?.map(orderStatus => (
-					<MenuItem value={orderStatus.id} onClick={stopPropagation}>
+					<MenuItem
+						value={orderStatus.id}
+						onClick={stopPropagation}
+						key={orderStatus.id}
+					>
 						{orderStatus.label}
 					</MenuItem>
 				))}

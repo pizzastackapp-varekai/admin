@@ -49,6 +49,9 @@ export const MenuOrderInput: FC<MenuOrderInputProps> = () => {
 					optionText="title"
 					source="menu_id"
 					label="Позиція меню"
+					sx={{
+						width: 400,
+					}}
 				/>
 
 				<NumberInput source="amount" label="Кількість" />
