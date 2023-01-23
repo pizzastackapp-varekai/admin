@@ -22,6 +22,7 @@ import { CategoryResource } from '@app/modules/category/category-resource'
 import { OrdersResource } from '@app/modules/orders/orders.resource'
 import { Dashboard } from './modules/dashboard/components/dashboard/dashboard.component'
 import { CustomerResource } from './modules/customers/customers.resource'
+import OneSignalReact from 'react-onesignal'
 
 export const App = () => {
 	const { data: settings } = useGetSettingsQuery()
@@ -36,6 +37,12 @@ export const App = () => {
 		}
 
 		getDataProvider()
+	}, [])
+
+	useEffect(() => {
+		OneSignalReact.init({
+			appId: '484e772f-5aed-4bdd-ad0d-bb4a96b6d3eb',
+		})
 	}, [])
 
 	if (!dataProvider || !settings) {
